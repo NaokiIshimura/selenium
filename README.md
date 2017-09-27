@@ -1,4 +1,4 @@
-# Ruby Sample Selenium
+# Selenium
 
 Seleniumのサンプルコード
 
