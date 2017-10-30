@@ -4,7 +4,23 @@ require 'selenium-webdriver'
 
 # chromeを起動する
 Selenium::WebDriver::Chrome.driver_path = './webdriver/chromedriver'
-driver = Selenium::WebDriver.for :chrome
+# driver = Selenium::WebDriver.for :chrome
+
+# prefs = {
+#   download: {
+#     prompt_for_download: false,
+#     default_directory: '~/Downloads'
+#   }
+# }
+# driver = Selenium::WebDriver.for :chrome, prefs: prefs
+
+prefs = {
+    prompt_for_download: false,
+    default_directory: '~/Downloads'
+}
+options = Selenium::WebDriver::Chrome::Options.new
+options.add_preference(:download, prefs)
+driver = Selenium::WebDriver.for :chrome, options: options
 
 # firefoxを起動する（app, プロファイル指定なし）
 # driver = Selenium::WebDriver.for :firefox
@@ -18,17 +34,19 @@ driver = Selenium::WebDriver.for :chrome
 driver.manage.timeouts.implicit_wait = 10
 
 # サイトにアクセスする
-base_url = "https://www.google.co.jp/search?q="
+base_url = 'https://www.google.co.jp/search?q='
 word = ARGV[0]
 url = base_url + word
 
-driver.get(url)
+driver.get url
+
+puts '===' + driver.title + '==='
 
 # 検索結果からタイトルとURLを取得する
 elements = driver.find_elements(:xpath, '//*[@class="rc"]/h3/a')
 for e in elements
   puts 'title:' + e.text
-  puts 'URL  :' + e.attribute("href")
+  puts 'URL  :' + e.attribute('href')
 end
 
 sleep 3
