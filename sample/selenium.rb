@@ -46,8 +46,6 @@ def browser_start(browser)
   # 暗黙的なwaitを設定
   driver.manage.timeouts.implicit_wait = 10
 
-  p driver.class
-
   return driver
 end
 
