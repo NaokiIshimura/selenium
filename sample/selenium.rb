@@ -54,7 +54,9 @@ end
 # main
 
 # 引数が指定されてない場合にパラメータを設定する
+# 検索ワード
 keyword = ARGV[0] ||= 'selenium'
+# ブラウザ
 browser = ARGV[1] ||= 'chrome'
 
 # ブラウザを起動する
