@@ -16,3 +16,6 @@ https://github.com/SeleniumHQ/selenium/wiki/Ruby-Bindings
 
 ## ChromeDriver
 https://sites.google.com/a/chromium.org/chromedriver/downloads
+
+## GeckoDriver
+https://github.com/mozilla/geckodriver/releases
